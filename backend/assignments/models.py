@@ -14,3 +14,6 @@ class Assignment(models.Model):
     # sum should be equal to first_term + second_term
     # its value will be computed in Celery
     sum = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.first_term} - {self.second_term}"

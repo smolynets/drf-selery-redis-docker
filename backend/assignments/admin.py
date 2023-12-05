@@ -1,3 +1,9 @@
 from django.contrib import admin
+from assignments.models import Assignment
 
-# Register your models here.
+class AssignmentAdmin(admin.ModelAdmin):
+    fields = ("first_term", "second_term", "sum")
+    list_display = ("first_term", "second_term")
+
+
+admin.site.register(Assignment, AssignmentAdmin)
