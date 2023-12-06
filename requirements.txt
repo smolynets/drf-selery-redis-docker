@@ -5,5 +5,6 @@ markdown
 django-filter
 
 celery[redis]
+flower
 
 psycopg2-binary
