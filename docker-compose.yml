@@ -2,6 +2,7 @@ version: '2'
 
 services:
     nginx:
+        container_name: nginx
         restart: always
         image: nginx:1.23-alpine
         ports:
@@ -10,6 +11,7 @@ services:
             - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
             - static_volume:/app/backend/django_static
     server:
+        container_name: server
         restart: unless-stopped
         build:
             context: .
@@ -30,6 +32,7 @@ services:
             POSTGRES_PASSWORD: postgres
             POSTGRES_PORT: 5432
     worker:
+        container_name: worker
         restart: unless-stopped
         build:
             context: .
@@ -51,11 +54,13 @@ services:
             - server
             - redis
     redis:
+        container_name: redis
         restart: unless-stopped
         image: redis:7.0.5-alpine 
         expose:
             - 6379
     db:
+        container_name: db
         image: postgres:13.0-alpine
         restart: unless-stopped
         volumes:
@@ -67,6 +72,7 @@ services:
         expose:
             - 5432
     flower:
+        container_name: flower
         image: mher/flower:0.9.7
         command: ['flower', '--broker=redis://redis:6379', '--port=5555', '--url-prefix=flower']
         expose:
