@@ -71,6 +71,18 @@ services:
             POSTGRES_PASSWORD: postgres
         expose:
             - 5432
+    # test_db:
+    #     container_name: test_db
+    #     image: postgres:13.0-alpine
+    #     restart: unless-stopped
+    #     volumes:
+    #         - postgres_data:/var/lib/postgresql/test_data/
+    #     environment:
+    #         POSTGRES_DB: test_postgres
+    #         POSTGRES_USER: test_postgres
+    #         POSTGRES_PASSWORD: test_postgres
+    #     expose:
+    #         - 5433
     flower:
         container_name: flower
         image: mher/flower:0.9.7
