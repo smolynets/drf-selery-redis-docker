@@ -114,6 +114,9 @@ DATABASES = {
     }
 }
 
+# if os.environ["DJANGO_SETTINGS_MODULE"] == "backend.test_settings":
+#     pass
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
